@@ -228,7 +228,18 @@ struct LandmarkCard: View {
 ### データモデル（ランドマーク構造体）
 
 ```swift
-// 該当部分のコードを抜粋して貼る
+struct Landmark: Identifiable {
+    let id = UUID()
+    let name: String
+    let description: String
+    let coordinate: CLLocationCoordinate2D
+    let category: Category
+
+    enum Category: String, CaseIterable {
+        case temple = "寺社"
+        // ... 
+    }
+}
 ```
 
 **何をしているか：**
@@ -245,7 +256,14 @@ struct LandmarkCard: View {
 ### 地図の表示とカメラ制御
 
 ```swift
-// 該当部分のコードを抜粋して貼る
+@State private var cameraPosition: MapCameraPosition = .region(
+    MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 35.6812, longitude: 139.7671),
+        span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
+    )
+)
+
+Map(position: $cameraPosition)
 ```
 
 **何をしているか：**
@@ -259,7 +277,16 @@ struct LandmarkCard: View {
 ### マーカーの表示
 
 ```swift
-// 該当部分のコードを抜粋して貼る
+Map(position: $cameraPosition) {
+    ForEach(filteredLandmarks) { landmark in
+        Marker(
+            landmark.name,
+            systemImage: landmark.category.iconName,
+            coordinate: landmark.coordinate
+        )
+        .tint(landmark.category.color)
+    }
+}
 ```
 
 **何をしているか：**
@@ -273,7 +300,11 @@ struct LandmarkCard: View {
 ### フィルター機能
 
 ```swift
-// 該当部分のコードを抜粋して貼る
+@State private var selectedCategories: Set<Landmark.Category> = Set(Landmark.Category.allCases)
+
+var filteredLandmarks: [Landmark] {
+    Landmark.sampleData.filter { selectedCategories.contains($0.category) }
+}
 ```
 
 **何をしているか：**
