@@ -22,7 +22,7 @@
 | 第2章 | 地図アプリの基本 | [chapters/02-map.md](chapters/02-map.md) | ✅ 完了 |
 | 第3章 | カメラの利用 | [chapters/03-camera.md](chapters/03-camera.md) | ✅ 完了 |
 | 第4章 | データの永続化 | [chapters/04-data-persistence.md](chapters/04-data-persistence.md) | ✅ 完了 |
-| 第5章 | 機能統合の実践 | [chapters/05-integration.md](chapters/05-integration.md) | 未着手 |
+| 第5章 | 機能統合の実践 | [chapters/05-integration.md](chapters/05-integration.md) | ✅ 完了 |
 | 第6章 | ジェスチャー操作 | [chapters/06-gestures.md](chapters/06-gestures.md) | 未着手 |
 | 第7章 | センサーの活用 | [chapters/07-sensors.md](chapters/07-sensors.md) | 未着手 |
 | 第8章 | ウィジェット | [chapters/08-widgets.md](chapters/08-widgets.md) | 未着手 |
